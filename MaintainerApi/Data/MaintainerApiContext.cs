@@ -33,8 +33,6 @@ namespace MaintainerApi.Data
 
             modelBuilder.Entity<GeneroObra>()
                 .HasKey(g => new { g.GeneroId, g.ObraId }); 
-            
-            modelBuilder.
 
             //eu gostaria de saber o pq nao está dando certo. 
 

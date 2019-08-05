@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
@@ -23,3 +24,30 @@ Global
 		SolutionGuid = {61C3B813-2C0B-40D3-8697-932A19463B72}
 	EndGlobalSection
 EndGlobal
+=======
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintainerApi", "MaintainerApi\MaintainerApi.csproj", "{DB759B60-D634-43EF-91D1-875B450D6356}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB759B60-D634-43EF-91D1-875B450D6356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB759B60-D634-43EF-91D1-875B450D6356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB759B60-D634-43EF-91D1-875B450D6356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB759B60-D634-43EF-91D1-875B450D6356}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61C3B813-2C0B-40D3-8697-932A19463B72}
+	EndGlobalSection
+EndGlobal
+>>>>>>> b799f2626cbacc3fa832a4ea45c17dff692ac363
