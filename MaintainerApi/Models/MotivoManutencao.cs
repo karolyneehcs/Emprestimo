@@ -7,7 +7,7 @@ namespace MaintainerApi.Models
 {
     public class MotivoManutencao
     {
-        public int Manutencoes { get; set; }
+        public int Id { get; set; }
         public string descricao { get; set; }
         public ICollection<Manutencao> Manutencoes { get; set; }
     }
