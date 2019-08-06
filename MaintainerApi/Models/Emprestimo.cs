@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MaintainerApi.Models
 {
-    public class Emprestimo
+    public class Emprestimo : Registro
     {
-        public int Id { get; set; }
         public int ObraId { get; set; }
         public int ExemplarId { get; set; }
         public int UsuarioId { get; set; }

@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MaintainerApi.Models
 {
-    public class Departamento
+    public class Departamento : Registro
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public int ChefeId { get; set; }
         ICollection<Funcionario> Funcionarios { get; set; }

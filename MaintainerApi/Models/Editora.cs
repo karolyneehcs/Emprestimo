@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MaintainerApi.Models
 {
-    public class Editora
+    public class Editora : Registro
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cidade { get; set; }
         public ICollection<Obra> Obras { get; set; }

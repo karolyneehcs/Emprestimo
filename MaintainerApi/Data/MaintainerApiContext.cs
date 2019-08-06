@@ -9,6 +9,10 @@ namespace MaintainerApi.Data
 {
     public class MaintainerApiContext : DbContext
     {
+        public MaintainerApiContext(DbContextOptions options) : base(options)
+        {
+
+        }
         public DbSet<Manutencao> Manutencoes { get; set; }
         public DbSet<MotivoManutencao> MotivoManutencoes { get; set; }
         public DbSet<Exemplar> Exemplares { get; set; }
@@ -26,37 +30,14 @@ namespace MaintainerApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("public");
-
-            modelBuilder.Entity<Manutencao>()
-                .HasKey(t => t.Id);
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
+            }
 
             modelBuilder.Entity<GeneroObra>()
                 .HasKey(g => new { g.GeneroId, g.ObraId });
 
-            modelBuilder.Entity<Exemplar>()
-                .HasKey(g => new { g.ObraId });
-
-            modelBuilder.Entity<Editora>()
-                .HasKey(g => g.Id);
-
-            modelBuilder.Entity<Emprestimo>()
-                .HasKey(g => new { g.FuncionarioId, g.ObraId, g.ExemplarId });
-
-            modelBuilder.Entity<Departamento>()
-                .HasKey(g => new { g.ChefeId });
-
-            modelBuilder.Entity<Genero>()
-                .HasKey(g => g.Id);
-
-            modelBuilder.Entity<Autor>()
-                .HasKey(g => g.Id);
-
-            modelBuilder.Entity<Reserva>()
-                .HasKey(g => new { g.UsuarioId, g.ObraId });
-
-            modelBuilder.Entity<Usuario>()
-                .HasKey(g => new { g.Id, g.IndicadorId });
 
             modelBuilder.Entity<ObraAutor>()
                 .HasKey(g => new { g.AutorId, g.ObraId }); 

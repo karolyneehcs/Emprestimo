@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MaintainerApi.Models
 {
-    public class Reserva
+    public class Reserva : Registro
     {
-        public int ReservaId { get; set; }
         public int UsuarioId { get; set; }
         public int ObraId { get; set; }
         public bool Reservado { get; set; }
