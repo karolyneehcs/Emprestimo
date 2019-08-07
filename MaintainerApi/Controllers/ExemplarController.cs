@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Exemplar;
 using Microsoft.AspNetCore.Http;
@@ -28,5 +29,29 @@ namespace MaintainerApi.Controllers
         {
             return Ok(_mapper.Map<ExemplarViewModel>(_exemplarRepository.GetAll()));
         }
+
+        [HttpPost]
+        public ActionResult<Exemplar> Create(SaveExemplarViewModel saveViewModel)
+        {
+            var exemplar = _exemplarRepository.Add(_mapper.Map<Exemplar>(saveViewModel));
+
+            if (exemplar == null)
+                return BadRequest();
+
+            return Ok(exemplar);
+        }
+
+        [HttpPut]
+        public ActionResult<Exemplar> Edit(SaveExemplarViewModel saveViewModel)
+        {
+            var exemplar = _exemplarRepository.Add(_mapper.Map<Exemplar>(saveViewModel));
+
+            if (exemplar == null)
+                return BadRequest();
+
+            return Ok(exemplar); 
+        }
+
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Usuario;
 using Microsoft.AspNetCore.Http;
@@ -32,14 +33,26 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<UsuarioViewModel> Create(SaveUsuarioViewModel saveViewModel)
+        public ActionResult<Usuario> Create(SaveUsuarioViewModel saveViewModel)
         {
-            if(string.IsNullOrEmpty)
-            {
-                return BadRequest();
-            }
+            var usuario = _usuarioRepository.Add(_mapper.Map<Usuario>(saveViewModel));
 
-            return Ok();
+            if (usuario == null)
+                return BadRequest();
+
+            return Ok(usuario);
+        } 
+
+        [HttpPut]
+        public ActionResult<Usuario> Edit(SaveUsuarioViewModel saveViewModel)
+        {
+            var usuario = _usuarioRepository.Add(_mapper.Map<Usuario>(saveViewModel));
+
+            if (usuario == null)
+                return BadRequest();
+
+            return Ok(usuario);
         }
+        
     }
 }

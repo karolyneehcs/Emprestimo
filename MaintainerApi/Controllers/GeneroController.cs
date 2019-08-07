@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Genero;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,28 @@ namespace MaintainerApi.Controllers
         public ActionResult<GeneroViewModel> Get()
         {
             return Ok(_mapper.Map<GeneroViewModel>(_generoRepository.GetAll()));
+        }
+
+        [HttpPost]
+        public ActionResult<Genero> Create(SaveGeneroViewModel saveViewModel)
+        {
+            var genero = _generoRepository.Add(_mapper.Map<Genero>(saveViewModel));
+
+            if (genero == null)
+                return BadRequest();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public ActionResult<Genero> Edit(SaveGeneroViewModel saveViewModel)
+        {
+            var genero = _generoRepository.Add(_mapper.Map<Genero>(saveViewModel));
+
+            if (genero == null)
+                return BadRequest();
+
+            return Ok();
         }
     }
 }

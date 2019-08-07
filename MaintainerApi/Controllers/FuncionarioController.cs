@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Funcionario;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,28 @@ namespace MaintainerApi.Controllers
         public ActionResult<FuncionarioViewModel> Get()
         {
             return Ok(_mapper.Map<FuncionarioViewModel>(_funcionarioRepository.GetAll()));
+        }
+
+        [HttpPost]
+        public ActionResult<Funcionario> Create(SaveFuncionarioViewModel saveViewModel)
+        {
+            var funcionario = _funcionarioRepository.Add(_mapper.Map<Funcionario>(saveViewModel));
+
+            if (funcionario == null)
+                return BadRequest();
+
+            return Ok(funcionario);
+        }
+
+        [HttpPut]
+        public ActionResult<Funcionario> Edit(SaveFuncionarioViewModel saveViewModel)
+        {
+            var funcionario = _funcionarioRepository.Add(_mapper.Map<Funcionario>(saveViewModel));
+
+            if (funcionario == null)
+                return BadRequest();
+
+            return Ok(funcionario);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Editora;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,29 @@ namespace MaintainerApi.Controllers
         public ActionResult<EditoraViewModel> Get()
         {
             return Ok(_mapper.Map<EditoraViewModel>(_editoraRepository.GetAll())); 
+
+        }
+
+        [HttpPost]
+        public ActionResult<Editora> Create(SaveEditoraViewModel saveViewModel)
+        {
+            var editora = _editoraRepository.Add(_mapper.Map<Editora>(saveViewModel));
+
+            if (editora == null)
+                return BadRequest();
+
+            return Ok(editora);
+        }
+
+        [HttpPut]
+        public ActionResult<Editora> Edit(SaveEditoraViewModel saveViewModel)
+        {
+            var editora = _editoraRepository.Add(_mapper.Map<Editora>(saveViewModel));
+
+            if (editora == null)
+                return BadRequest();
+
+            return Ok(editora);
         }
     }
 }

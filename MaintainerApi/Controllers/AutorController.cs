@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Autor;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +27,28 @@ namespace MaintainerApi.Controllers
         public ActionResult<AutorViewModel> Get()
         {
             return Ok(_mapper.Map<AutorViewModel>(_autorRepository.GetAll()));
+        }
+
+        [HttpPost]
+        public ActionResult<Autor> Create(SaveAutorViewModel saveViewModel)
+        {
+            var autor = _autorRepository.Add(_mapper.Map<Autor>(saveViewModel));
+
+            if (autor == null)
+                return BadRequest();
+
+            return Ok(autor);
+        }
+        
+        [HttpPut]
+        public ActionResult<Autor> Edit(SaveAutorViewModel saveViewModel)
+        {
+            var autor = _autorRepository.Add(_mapper.Map<Autor>(saveViewModel));
+
+            if (autor == null)
+                return BadRequest();
+
+            return Ok(autor);
         }
     }
 }
