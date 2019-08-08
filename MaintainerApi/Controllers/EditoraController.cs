@@ -32,25 +32,25 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Editora> Create(SaveEditoraViewModel saveViewModel)
+        public ActionResult<EditoraViewModel> Create(SaveEditoraViewModel saveViewModel)
         {
             var editora = _editoraRepository.Add(_mapper.Map<Editora>(saveViewModel));
 
             if (editora == null)
                 return BadRequest();
 
-            return Ok(editora);
+            return Ok(_mapper.Map<EditoraViewModel>(editora));
         }
 
         [HttpPut]
-        public ActionResult<Editora> Edit(SaveEditoraViewModel saveViewModel)
+        public ActionResult<EditoraViewModel> Edit(SaveEditoraViewModel saveViewModel)
         {
             var editora = _editoraRepository.Add(_mapper.Map<Editora>(saveViewModel));
 
             if (editora == null)
                 return BadRequest();
 
-            return Ok(editora);
+            return Ok(_mapper.Map<EditoraViewModel>(editora));
         }
     }
 }

@@ -31,25 +31,25 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Emprestimo> Create(SaveEmprestimoViewModel saveViewModel)
+        public ActionResult<EmprestimoViewModel> Create(SaveEmprestimoViewModel saveViewModel)
         {
             var emprestimo = _emprestimoRepository.Add(_mapper.Map<Emprestimo>(saveViewModel));
 
             if (emprestimo == null)
                 return BadRequest();
 
-            return Ok(emprestimo);
+            return Ok(_mapper.Map<EmprestimoViewModel>(emprestimo));
         }
 
         [HttpPut]
-        public ActionResult<Emprestimo> Edit(SaveEmprestimoViewModel saveViewModel)
+        public ActionResult<EmprestimoViewModel> Edit(SaveEmprestimoViewModel saveViewModel)
         {
             var emprestimo = _emprestimoRepository.Add(_mapper.Map<Emprestimo>(saveViewModel));
 
             if (emprestimo == null)
                 return BadRequest();
 
-            return Ok(emprestimo);
+            return Ok(_mapper.Map<EmprestimoViewModel>(emprestimo));
         }
     }
 }

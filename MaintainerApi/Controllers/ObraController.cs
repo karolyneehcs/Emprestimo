@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.Obra;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,28 @@ namespace MaintainerApi.Controllers
         public ActionResult<ObraViewModel> Get()
         {
             return Ok(_mapper.Map<ObraViewModel>(_obraRepository.GetAll()));
+        }
+
+        [HttpPost]
+        public ActionResult<ObraViewModel> Create(SaveObraViewModel saveViewModel)
+        {
+            var obra = _obraRepository.Add(_mapper.Map<Obra>(saveViewModel));
+
+            if (obra == null)
+                return BadRequest();
+
+            return Ok(_mapper.Map<ObraViewModel>(obra));
+        }
+
+        [HttpPut]
+        public ActionResult<ObraViewModel> Edit(SaveObraViewModel saveViewModel)
+        {
+            var obra = _obraRepository.Add(_mapper.Map<Obra>(saveViewModel));
+
+            if (obra == null)
+                return BadRequest();
+
+            return Ok(_mapper.Map<ObraViewModel>(obra));
         }
     }
 }

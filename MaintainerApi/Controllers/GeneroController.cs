@@ -38,18 +38,18 @@ namespace MaintainerApi.Controllers
             if (genero == null)
                 return BadRequest();
 
-            return Ok();
+            return Ok(_mapper.Map<GeneroViewModel>(genero));
         }
 
         [HttpPost]
-        public ActionResult<Genero> Edit(SaveGeneroViewModel saveViewModel)
+        public ActionResult<GeneroViewModel> Edit(SaveGeneroViewModel saveViewModel)
         {
             var genero = _generoRepository.Add(_mapper.Map<Genero>(saveViewModel));
 
             if (genero == null)
                 return BadRequest();
 
-            return Ok();
+            return Ok(_mapper.Map<GeneroViewModel>(genero));
         }
     }
 }

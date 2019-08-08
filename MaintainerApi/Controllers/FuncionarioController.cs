@@ -31,25 +31,25 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Funcionario> Create(SaveFuncionarioViewModel saveViewModel)
+        public ActionResult<FuncionarioViewModel> Create(SaveFuncionarioViewModel saveViewModel)
         {
             var funcionario = _funcionarioRepository.Add(_mapper.Map<Funcionario>(saveViewModel));
 
             if (funcionario == null)
                 return BadRequest();
 
-            return Ok(funcionario);
+            return Ok(_mapper.Map<FuncionarioViewModel>(funcionario));
         }
 
         [HttpPut]
-        public ActionResult<Funcionario> Edit(SaveFuncionarioViewModel saveViewModel)
+        public ActionResult<FuncionarioViewModel> Edit(SaveFuncionarioViewModel saveViewModel)
         {
             var funcionario = _funcionarioRepository.Add(_mapper.Map<Funcionario>(saveViewModel));
 
             if (funcionario == null)
                 return BadRequest();
 
-            return Ok(funcionario);
+            return Ok(_mapper.Map<FuncionarioViewModel>(funcionario));
         }
     }
 }

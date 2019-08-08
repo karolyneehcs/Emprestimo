@@ -31,25 +31,25 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Exemplar> Create(SaveExemplarViewModel saveViewModel)
+        public ActionResult<ExemplarViewModel> Create(SaveExemplarViewModel saveViewModel)
         {
             var exemplar = _exemplarRepository.Add(_mapper.Map<Exemplar>(saveViewModel));
 
             if (exemplar == null)
                 return BadRequest();
 
-            return Ok(exemplar);
+            return Ok(_mapper.Map<ExemplarViewModel>(exemplar));
         }
 
         [HttpPut]
-        public ActionResult<Exemplar> Edit(SaveExemplarViewModel saveViewModel)
+        public ActionResult<ExemplarViewModel> Edit(SaveExemplarViewModel saveViewModel)
         {
             var exemplar = _exemplarRepository.Add(_mapper.Map<Exemplar>(saveViewModel));
 
             if (exemplar == null)
                 return BadRequest();
 
-            return Ok(exemplar); 
+            return Ok(_mapper.Map<ExemplarViewModel>(exemplar)); 
         }
 
 

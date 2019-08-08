@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MaintainerApi.Models;
 using MaintainerApi.Repository;
 using MaintainerApi.ViewModels.MotivoManutencao;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,28 @@ namespace MaintainerApi.Controllers
         public ActionResult<MotivoManutencaoViewModel> Get()
         {
             return Ok(_mapper.Map<MotivoManutencaoViewModel>(_motivoManutencaoRepository.GetAll())); 
+        }
+
+        [HttpPost]
+        public ActionResult<MotivoManutencaoViewModel> Create(SaveMotivoManutencaoViewModel saveViewModel)
+        {
+            var motivoManutencao = _motivoManutencaoRepository.Add(_mapper.Map<MotivoManutencao>(saveViewModel));
+
+            if (motivoManutencao == null)
+                return BadRequest();
+
+            return Ok(_mapper.Map<MotivoManutencao>(motivoManutencao));
+        }
+
+        [HttpPut]
+        public ActionResult<MotivoManutencaoViewModel> Edit(SaveMotivoManutencaoViewModel saveViewModel)
+        {
+            var motivoManutencao = _motivoManutencaoRepository.Add(_mapper.Map<MotivoManutencao>(saveViewModel));
+
+            if (motivoManutencao == null)
+                return BadRequest();
+
+            return Ok(_mapper.Map<MotivoManutencaoViewModel>(motivoManutencao));
         }
     }
 }

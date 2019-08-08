@@ -30,25 +30,25 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Autor> Create(SaveAutorViewModel saveViewModel)
+        public ActionResult<AutorViewModel> Create(SaveAutorViewModel saveViewModel)
         {
             var autor = _autorRepository.Add(_mapper.Map<Autor>(saveViewModel));
 
             if (autor == null)
                 return BadRequest();
 
-            return Ok(autor);
+            return Ok(_mapper.Map<AutorViewModel>(autor));
         }
         
         [HttpPut]
-        public ActionResult<Autor> Edit(SaveAutorViewModel saveViewModel)
+        public ActionResult<AutorViewModel> Edit(SaveAutorViewModel saveViewModel)
         {
             var autor = _autorRepository.Add(_mapper.Map<Autor>(saveViewModel));
 
             if (autor == null)
                 return BadRequest();
 
-            return Ok(autor);
+            return Ok(_mapper.Map<AutorViewModel>(autor));
         }
     }
 }
