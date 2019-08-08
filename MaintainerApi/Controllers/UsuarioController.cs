@@ -27,7 +27,7 @@ namespace MaintainerApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<UsuarioViewModel> Get()
+        public ActionResult<UsuarioViewModel> GetAll()
         {
             return Ok(_mapper.Map<UsuarioViewModel>(_usuarioRepository.GetAll()));
         }

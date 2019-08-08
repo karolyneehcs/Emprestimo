@@ -13,5 +13,25 @@ namespace MaintainerApi.Repository
         {
 
         }
+
+        public IQueryable<Autor> ToPagged(IQueryable<Autor> entities, int page, int pageSize)
+        {
+            return page == 0 ? entities.Skip((page-1)*pageSize).Take(pageSize) : entities; 
+        }
+
+        public IQueryable<Autor> OrderBy(IQueryable<Autor> entity, string atributo, string direcao)
+        {
+            switch(atributo)
+            {
+
+                case "nome":
+                    entity = (direcao == "asc")
+                        ? entity.OrderBy(n => n.Nome)
+                        : entity.OrderByDescending(n => n.Nome);
+                    break; 
+            }
+
+            return entity;
+        }
     }
 }
