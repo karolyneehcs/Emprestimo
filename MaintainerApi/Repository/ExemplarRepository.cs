@@ -19,5 +19,31 @@ namespace MaintainerApi.Repository
         {
             return base.GetAll().Include(a => a.Obra);
         }
+
+        public IQueryable<Exemplar> ToPagged(IQueryable<Exemplar> entities, int page, int pageSize)
+        {
+            return page == 0 ? entities.Skip((page - 1) * pageSize).Take(pageSize) : entities; 
+        }
+        public IQueryable<Exemplar> OrderBy(IQueryable<Exemplar> entity, string atributo, string direcao)
+        {
+            switch(atributo)
+            {
+                case "idObra":
+                    entity = (direcao == "asc")
+                        ? entity.OrderBy(c => c.ObraId)
+                        : entity.OrderByDescending(c => c.ObraId);
+                    return entity;
+                case "numero":
+                    entity = (direcao == "asc")
+                        ? entity.OrderBy(c => c.Numero)
+                        : entity.OrderByDescending(c => c.Numero);
+                    return entity;
+                default:
+                    entity = (direcao == "asc")
+                        ? entity.OrderBy(n => n.Id)
+                        : entity.OrderByDescending(n => n.Id);
+                    return entity;
+            }
+        }
     }
 }

@@ -28,10 +28,12 @@ namespace MaintainerApi.Repository
                     entity = (direcao == "asc")
                         ? entity.OrderBy(n => n.Nome)
                         : entity.OrderByDescending(n => n.Nome);
-                    break; 
-            }
-
-            return entity;
+                    return entity; 
+                default:
+                    entity = (direcao == "asc")
+                        ? entity.OrderBy(n => n.Id)
+                        : entity.OrderByDescending(n => n.Id);
+                    return entity; 
         }
     }
 }

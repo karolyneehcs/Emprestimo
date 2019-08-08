@@ -19,5 +19,6 @@ namespace MaintainerApi.Repository
         {
             return base.GetAll().Include(a => a.Departamento);
         }
+
     }
 }
