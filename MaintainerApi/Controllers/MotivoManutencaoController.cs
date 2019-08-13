@@ -21,13 +21,13 @@ namespace MaintainerApi.Controllers
         public MotivoManutencaoController(MotivoManutencaoRepository motivoManutencaoRepository, IMapper mapper)
         {
             _motivoManutencaoRepository = motivoManutencaoRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult<MotivoManutencaoViewModel> Get()
         {
-            return Ok(_mapper.Map<MotivoManutencaoViewModel>(_motivoManutencaoRepository.GetAll())); 
+            return Ok(_mapper.Map<MotivoManutencaoViewModel>(_motivoManutencaoRepository.GetAll()));
         }
 
         [HttpGet]
@@ -56,6 +56,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<MotivoManutencaoViewModel>(motivoManutencao));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _motivoManutencaoRepository.Remove(id);
+
+          return Ok(); 
         }
     }
 }

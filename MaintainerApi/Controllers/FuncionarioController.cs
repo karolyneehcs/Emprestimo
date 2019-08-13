@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public FuncionarioController(FuncionarioRepository funcionarioRepository, IMapper mapper)
         {
             _funcionarioRepository = funcionarioRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -58,6 +58,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<FuncionarioViewModel>(funcionario));
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest;
+          }
+
+          _funcionarioRepository.Remove(id);
+
+          return Ok();
         }
     }
 }

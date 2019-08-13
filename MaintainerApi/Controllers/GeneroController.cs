@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public GeneroController(GeneroRepository generoRepository, IMapper mapper)
         {
             _generoRepository = generoRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -56,6 +56,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<GeneroViewModel>(genero));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _generoRepository.Remove(id);
+
+          return Ok();
         }
     }
 }

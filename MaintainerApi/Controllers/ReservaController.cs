@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public ReservaController(ReservaRepository reservaRepository, IMapper mapper)
         {
             _reservaRepository = reservaRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -56,6 +56,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<ReservaViewModel>(reserva));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _reservaRepository.Remove(id);
+
+          return Ok();
         }
     }
 }

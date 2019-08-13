@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public ExemplarController(ExemplarRepository exemplarRepository, IMapper mapper)
         {
             _exemplarRepository = exemplarRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -55,9 +55,21 @@ namespace MaintainerApi.Controllers
             if (exemplar == null)
                 return BadRequest();
 
-            return Ok(_mapper.Map<ExemplarViewModel>(exemplar)); 
+            return Ok(_mapper.Map<ExemplarViewModel>(exemplar));
         }
 
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _exemplarRepository.Remove(id);
+
+          return Ok();
+        }
 
     }
 }

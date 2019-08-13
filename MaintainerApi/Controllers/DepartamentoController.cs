@@ -58,5 +58,18 @@ namespace MaintainerApi.Controllers
 
             return Ok(_mapper.Map<DepartamentoViewModel>(departamento));
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            if(id == 0)
+            {
+              return BadRequest();
+            }
+
+            _departamentoRepository.Remove(id);
+
+            return Ok();
+        }
     }
 }

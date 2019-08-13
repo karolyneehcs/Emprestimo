@@ -21,13 +21,13 @@ namespace MaintainerApi.Controllers
         public EditoraController(EditoraRepository editoraRepository, IMapper mapper)
         {
             _editoraRepository = editoraRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult<EditoraViewModel> Get()
         {
-            return Ok(_mapper.Map<EditoraViewModel>(_editoraRepository.GetAll())); 
+            return Ok(_mapper.Map<EditoraViewModel>(_editoraRepository.GetAll()));
 
         }
 
@@ -57,6 +57,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<EditoraViewModel>(editora));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _editoraRepository.Remove(id);
+
+          return Ok();
         }
     }
 }

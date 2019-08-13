@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public ManutencaoController(ManutencaoRepository manutencaoRepository, IMapper mapper)
         {
             _manutencaoRepository = manutencaoRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -48,7 +48,7 @@ namespace MaintainerApi.Controllers
 
             return (_mapper.Map<ManutencaoViewModel>(manutencao));
         }
-        
+
         [HttpPut]
         public ActionResult<ManutencaoViewModel> Edit(SaveManutencaoViewModel saveViewModel)
         {
@@ -58,6 +58,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<ManutencaoViewModel>(manutencao));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _manutencaoRepository.Remove(id);
+
+          return Ok();
         }
 
     }

@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public ObraController(ObraRepository obraRepository, IMapper mapper)
         {
             _obraRepository = obraRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -56,6 +56,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<ObraViewModel>(obra));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _obraRepository.Remove(id);
+
+          return Ok();
         }
     }
 }

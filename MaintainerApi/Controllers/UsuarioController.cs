@@ -23,7 +23,7 @@ namespace MaintainerApi.Controllers
         public UsuarioController(UsuarioRepository usuarioRepository, IMapper mapper)
         {
             _usuarioRepository = usuarioRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<UsuarioViewModel>(usuario));
-        } 
+        }
 
         [HttpPut]
         public ActionResult<UsuarioViewModel> Edit(SaveUsuarioViewModel saveViewModel)
@@ -59,6 +59,18 @@ namespace MaintainerApi.Controllers
 
             return Ok(_mapper.Map<UsuarioViewModel>(usuario));
         }
-        
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _usuarioRepository.Remove(id); 
+
+          return Ok();
+        }
     }
 }

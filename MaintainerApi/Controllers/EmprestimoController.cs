@@ -21,7 +21,7 @@ namespace MaintainerApi.Controllers
         public EmprestimoController(EmprestimoRepository emprestimoRepository, IMapper mapper)
         {
             _emprestimoRepository = emprestimoRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -56,6 +56,19 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<EmprestimoViewModel>(emprestimo));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+          if(id == 0)
+          {
+            return BadRequest();
+          }
+
+          _emprestimoRepository.Remove(id);
+
+          return Ok();
         }
     }
 }
