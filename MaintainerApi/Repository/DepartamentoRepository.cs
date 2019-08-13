@@ -28,7 +28,7 @@ namespace MaintainerApi.Repository
                         ? entity.OrderBy(c => c.Nome)
                         : entity.OrderByDescending(c => c.Nome);
                     return entity;
-                case "idChefe:
+                case "idChefe":
                     entity = (direcao == "asc")
                         ? entity.OrderBy(c => c.ChefeId) 
                         : entity.OrderByDescending(c => c.ChefeId);

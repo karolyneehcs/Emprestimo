@@ -32,12 +32,12 @@ namespace MaintainerApi.Repository
 
             return entity;
         }
-        public virtual TEntity Remove(TEntity entity)
+        public virtual TEntity Remove(int id)
         {
-            _entity.Remove(entity);
+            var entity =_entity.Remove(_entity.Find(id));
             SaveChanges();
 
-            return entity;
+            return entity.Entity;
         }
         public virtual TEntity GetById(int id)
         {

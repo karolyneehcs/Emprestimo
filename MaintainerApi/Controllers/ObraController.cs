@@ -30,6 +30,12 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<ObraViewModel>(_obraRepository.GetAll()));
         }
 
+        [HttpGet]
+        public ActionResult<ObraViewModel> Get(int Id)
+        {
+            return Ok(_mapper.Map<ObraViewModel>(_obraRepository.GetById(Id)));
+        }
+
         [HttpPost]
         public ActionResult<ObraViewModel> Create(SaveObraViewModel saveViewModel)
         {

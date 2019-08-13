@@ -31,6 +31,12 @@ namespace MaintainerApi.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult<EditoraViewModel> Get(int Id)
+        {
+            return Ok(_mapper.Map<EditoraViewModel>(_editoraRepository.GetById(Id)));
+        }
+
         [HttpPost]
         public ActionResult<EditoraViewModel> Create(SaveEditoraViewModel saveViewModel)
         {

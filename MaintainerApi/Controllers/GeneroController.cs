@@ -30,6 +30,12 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<GeneroViewModel>(_generoRepository.GetAll()));
         }
 
+        [HttpGet]
+        public ActionResult<GeneroViewModel> Get(int Id)
+        {
+            return Ok(_mapper.Map<GeneroViewModel>(_generoRepository.GetById(Id)));
+        }
+
         [HttpPost]
         public ActionResult<Genero> Create(SaveGeneroViewModel saveViewModel)
         {

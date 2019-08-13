@@ -32,6 +32,12 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<UsuarioViewModel>(_usuarioRepository.GetAll()));
         }
 
+        [HttpGet]
+        public ActionResult<UsuarioViewModel> Get(int Id)
+        {
+            return Ok(_mapper.Map<UsuarioViewModel>(_usuarioRepository.GetById(Id)));
+        }
+
         [HttpPost]
         public ActionResult<UsuarioViewModel> Create(SaveUsuarioViewModel saveViewModel)
         {

@@ -30,6 +30,12 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<MotivoManutencaoViewModel>(_motivoManutencaoRepository.GetAll())); 
         }
 
+        [HttpGet]
+        public ActionResult<MotivoManutencaoViewModel> Get(int Id)
+        {
+            return Ok(_mapper.Map<MotivoManutencaoViewModel>(_motivoManutencaoRepository.GetById(Id)));
+        }
+
         [HttpPost]
         public ActionResult<MotivoManutencaoViewModel> Create(SaveMotivoManutencaoViewModel saveViewModel)
         {

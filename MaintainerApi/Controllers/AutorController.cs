@@ -16,17 +16,23 @@ namespace MaintainerApi.Controllers
     public class AutorController : ControllerBase
     {
         private readonly AutorRepository _autorRepository;
-        private readonly IMapper _mapper; 
+        private readonly IMapper _mapper;
         public AutorController(AutorRepository autorRepository, IMapper mapper)
         {
             _autorRepository = autorRepository;
-            _mapper = mapper; 
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult<AutorViewModel> Get()
         {
             return Ok(_mapper.Map<AutorViewModel>(_autorRepository.GetAll()));
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<AutorViewModel> Get(int Id)
+        {
+            return Ok(_mapper.Map<AutorViewModel>(_autorRepository.GetById(Id)));
         }
 
         [HttpPost]
@@ -39,7 +45,7 @@ namespace MaintainerApi.Controllers
 
             return Ok(_mapper.Map<AutorViewModel>(autor));
         }
-        
+
         [HttpPut]
         public ActionResult<AutorViewModel> Edit(SaveAutorViewModel saveViewModel)
         {
@@ -49,6 +55,18 @@ namespace MaintainerApi.Controllers
                 return BadRequest();
 
             return Ok(_mapper.Map<AutorViewModel>(autor));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            if(id == 0)
+            {
+                return BadRequest();
+            }
+            _autorRepository.Remove(id);
+
+            return Ok();
         }
     }
 }
