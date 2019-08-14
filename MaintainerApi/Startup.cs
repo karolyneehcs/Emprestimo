@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MaintainerApi.Data;
+using MaintainerApi.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,19 @@ namespace MaintainerApi
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddScoped<AutorRepository>();
+            services.AddScoped<DepartamentoRepository>();
+            services.AddScoped<EditoraRepository>();
+            services.AddScoped<EmprestimoRepository>();
+            services.AddScoped<ExemplarRepository>();
+            services.AddScoped<FuncionarioRepository>();
+            services.AddScoped<GeneroRepository>();
+            services.AddScoped<ManutencaoRepository>();
+            services.AddScoped<MotivoManutencaoRepository>();
+            services.AddScoped<ObraRepository>();
+            services.AddScoped<ReservaRepository>();
+            services.AddScoped<UsuarioRepository>();
 
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<MaintainerApiContext>(a => a.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
