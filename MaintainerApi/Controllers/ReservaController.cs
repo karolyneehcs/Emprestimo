@@ -30,10 +30,10 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<ReservaViewModel>(_reservaRepository.GetAll()));
         }
 
-        [HttpGet]
-        public ActionResult<ReservaViewModel> Get(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<ReservaViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<ReservaViewModel>(_reservaRepository.GetById(Id)));
+            return Ok(_mapper.Map<ReservaViewModel>(_reservaRepository.GetById(id)));
         }
 
         [HttpPost]

@@ -31,10 +31,10 @@ namespace MaintainerApi.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult<ManutencaoViewModel> Get(int Id)
+        [HttpGet("id")]
+        public ActionResult<ManutencaoViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<ManutencaoViewModel>(_manutencaoRepository.GetById(Id)));
+            return Ok(_mapper.Map<ManutencaoViewModel>(_manutencaoRepository.GetById(id)));
         }
 
 

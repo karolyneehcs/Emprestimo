@@ -31,10 +31,10 @@ namespace MaintainerApi.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult<FuncionarioViewModel> Get(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<FuncionarioViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<FuncionarioViewModel>(_funcionarioRepository.GetById(Id)));
+            return Ok(_mapper.Map<FuncionarioViewModel>(_funcionarioRepository.GetById(id)));
         }
 
 
@@ -65,7 +65,7 @@ namespace MaintainerApi.Controllers
         {
           if(id == 0)
           {
-            return BadRequest;
+            return BadRequest();
           }
 
           _funcionarioRepository.Remove(id);

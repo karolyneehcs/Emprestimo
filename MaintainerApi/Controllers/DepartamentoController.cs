@@ -30,10 +30,10 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<DepartamentoViewModel>(_departamentoRepository.GetAll()));
         }
 
-        [HttpGet]
-        public ActionResult<DepartamentoViewModel> Get(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<DepartamentoViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<DepartamentoViewModel>(_departamentoRepository.GetById(Id)));
+            return Ok(_mapper.Map<DepartamentoViewModel>(_departamentoRepository.GetById(id)));
         }
 
 

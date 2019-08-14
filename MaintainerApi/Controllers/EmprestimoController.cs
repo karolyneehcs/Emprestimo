@@ -30,10 +30,10 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<EmprestimoViewModel>(_emprestimoRepository.GetAll()));
         }
 
-        [HttpGet]
-        public ActionResult<EmprestimoViewModel> Get(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<EmprestimoViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<EmprestimoViewModel>(_emprestimoRepository.GetById(Id)));
+            return Ok(_mapper.Map<EmprestimoViewModel>(_emprestimoRepository.GetById(id)));
         }
 
         [HttpPost]

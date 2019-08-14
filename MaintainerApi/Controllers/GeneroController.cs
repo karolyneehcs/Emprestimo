@@ -30,10 +30,10 @@ namespace MaintainerApi.Controllers
             return Ok(_mapper.Map<GeneroViewModel>(_generoRepository.GetAll()));
         }
 
-        [HttpGet]
-        public ActionResult<GeneroViewModel> Get(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<GeneroViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<GeneroViewModel>(_generoRepository.GetById(Id)));
+            return Ok(_mapper.Map<GeneroViewModel>(_generoRepository.GetById(id)));
         }
 
         [HttpPost]

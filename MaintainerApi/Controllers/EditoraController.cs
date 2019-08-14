@@ -31,10 +31,10 @@ namespace MaintainerApi.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult<EditoraViewModel> Get(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<EditoraViewModel> Get(int id)
         {
-            return Ok(_mapper.Map<EditoraViewModel>(_editoraRepository.GetById(Id)));
+            return Ok(_mapper.Map<EditoraViewModel>(_editoraRepository.GetById(id)));
         }
 
         [HttpPost]
