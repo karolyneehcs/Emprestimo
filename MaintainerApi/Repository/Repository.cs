@@ -16,7 +16,8 @@ namespace MaintainerApi.Repository
 
         public Repository(MaintainerApiContext context)
         {
-            _context = context.DbSet<TEntity>();
+            _context = context;
+            _entity = _context.Set<TEntity>();
         }
         public virtual TEntity Add(TEntity entity)
         {
